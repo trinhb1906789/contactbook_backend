@@ -1,15 +1,15 @@
 const app = require("./app");
 const config = request("./app/config");
-// const mogoose = require("mongoose");
-// const { default: mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 
-// mongoose.connect(config.db.uri)
-//     .then(() =>{
-//         console.log("Connected to the database!");
-//     })
-//     .catch((error) => {
-//         console.log("Cannot connect to the database!",error);
-//     });
+mongoose.connect(config.db.uri)
+    .then(() => {
+        console.log("Connected to the database!");
+    })
+    .catch((error) => {
+        console.log("Cannot connect to the database!", error);
+        process.exit();
+    });
 
 const PORT = config.app.port;
 app.listen(PORT, () => {
